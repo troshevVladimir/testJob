@@ -1,0 +1,93 @@
+$white: #FFF;
+$black: #000;
+$lightning-yellow: #FA2D83;
+$tango: #3BCDFB;
+$pomegranate: #D728F4;
+$thunder: #231f20;
+$oslo-gray: #97999b;
+$quill-gray: #d9d9d6;
+$alabaster: #f8f8f8;
+$fun-green: #009b19;
+$heliotrope: #9975ff;
+$yellow-orange: #FBB53B;
+$mercury: #e5e5e5;
+
+
+// list of colors - add here when add new variable
+$colors:
+	$white,
+	$black,
+	$lightning-yellow,
+	$tango,
+	$pomegranate,
+	$thunder,
+	$oslo-gray,
+	$quill-gray,
+	$alabaster,
+	$fun-green,
+	$heliotrope,
+	$yellow-orange,
+	$mercury;
+
+$colorNames:
+	"white",
+	"black",
+	"lightning-yellow",
+	"tango",
+	"pomegranate",
+	"thunder",
+	"oslo-gray",
+	"quill-gray",
+	"alabaster",
+	"fun-green",
+	"heliotrope",
+	"yellow-orange",
+	"mercury";
+
+//text
+$base-text-color: $thunder;
+
+//errors
+$error-text-color: #ff5842;
+$error-bg-color: #ffe2de;
+
+//links
+$link-default-color: $thunder;
+$link-active-color: $pomegranate;
+
+//tables
+$table-header-color: $pomegranate;
+$table-header-bg: grey;
+
+//tabs
+$tabs-button-text-color: $thunder;
+$tabs-button-text-color-inactive: #97999b;
+$tabs-active-tab:  $thunder;
+$tabs-inactive-tab: #97999b;
+
+//accordions
+$accordion-button-text-color: $thunder;
+$accordion-button-hover-arrow-bg: grey;
+$accordion-button-active-arrow-bg: $thunder;
+
+// news
+$news-date: #4a4a4a;
+
+// filter
+$filter-border: #DFDFDF;
+
+// mark
+$mark-bg-color: #fff;
+$mark-text-color: #000;
+
+// vacancies
+$vacancies-title: #979797;
+$vacancies-name: #2f2f2f;
+
+// media
+$media-dark: #fbb538;
+
+// social colors
+$facebook-color: #3B5998;
+$twitter-color: #55ACEE;
+$linkedin-color: #0077B5;

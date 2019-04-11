@@ -1,0 +1,130 @@
+html {
+	font-size: $base-font-size;
+	//Prevent iOS text size adjust after orientation change, without disabling user zoom.
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	//
+}
+
+html, body {
+	@extend .u-entire-height;
+}
+
+body {
+	@extend %text--body;
+	min-height: 100vh;
+	color: $base-text-color;
+	background-color: $white;
+	min-width: $site-min-width;
+	line-height: $base-line-height;
+}
+
+
+//
+// Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+//
+b, strong {
+	font-weight: bold;
+}
+
+em, i, dfn, cite {
+	font-style: italic;
+}
+
+//
+// Prevent `sub` and `sup` affecting `line-height` in all browsers.
+//
+sub, sup {
+	@include font-size(10px);
+	line-height: normal;
+	position: relative;
+	font-weight: normal;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+small {
+	@include font-size(12px);
+}
+
+mark {
+	background-color: $mark-bg-color;
+	color: $mark-text-color;
+}
+
+//
+// Remove border when inside `a` element in IE 8/9/10.
+//
+img {
+	border: 0;
+}
+
+//
+// Correct overflow not hidden in IE 9/10/11.
+//
+svg:not(:root) {
+	overflow: hidden;
+}
+
+//
+// Address differences between Firefox and other browsers.
+//
+hr {
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	height: 0;
+}
+
+//
+// Contain overflow in all browsers.
+//
+pre {
+	overflow: auto;
+}
+
+//
+// Content base style
+//
+.content {
+	// * + * { // http://frontender.info/axiomatic-css-and-lobotomized-owls/
+	// 	@include rem(margin-top, $grid-margin);
+	// }
+
+	// .row {
+	// 	@include rem(margin-top, -($grid-margin));
+
+	// 	> [class^="col"] {
+	// 		@include rem(margin-top, $grid-margin);
+	// 	}
+	// }
+
+	img {
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+// .sg-section * + * {
+// 	margin-top: 1rem;
+// }
+
+//
+// Hide input-outline, border, bg in all browsers.
+//
+input {
+	outline: none;
+	border: none;
+	background-color: transparent;
+}
+
+@include colorsClasses($colors, $colorNames);
+@include cursors($cursorProperty);

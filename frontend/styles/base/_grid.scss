@@ -1,0 +1,405 @@
+@import "compass/utilities/general/clearfix";
+
+$viewport-layouts: (
+	"default":(),
+	"desktop":("max-width": $breakpoint-desktop),
+	"tablet":("max-width": $breakpoint-tablet),
+	"mobile":("max-width": $breakpoint-mobile),
+	"v-mobile":("max-width": $breakpoint-v-mobile)
+);
+
+$columns: 12;
+$gutter-width: 0.9375rem;
+$half-gutter-width: $gutter-width * 1;
+$gutter-compensation: -1 * $half-gutter-width;
+
+@mixin grid-row ($reverse:false) {
+	@include grid-row-direction($reverse);
+	box-sizing: border-box;
+	display: flex;
+	flex: 0 1 auto;
+	flex-wrap: wrap;
+	margin-right: $gutter-compensation;
+	margin-left: $gutter-compensation;
+
+	@include breakpoint(tablet) {
+		margin-left: -0.75rem;
+		margin-right: -0.75rem;
+	}
+
+	@include breakpoint(mobile) {
+		margin-left: -0.5rem;
+		margin-right: -0.5rem;
+	}
+
+	html.mdr-no-flexwrap & {
+		margin-left: - $gutter-width;
+		list-style: none;
+		margin-bottom: 0;
+		@include pie-clearfix;
+
+		@include breakpoint(tablet) {
+			margin-left: -0.75rem;
+		}
+
+		@include breakpoint(mobile) {
+			margin-left: -0.5rem;
+		}
+	}
+}
+
+@mixin grid-row-direction ($reverse:false) {
+	@if ($reverse) {
+		flex-direction: row-reverse;
+	} @else {
+		flex-direction: row;
+	}
+}
+
+@mixin grid-row-alignment-horizontal ($alignment) {
+	$justify: inherit;
+
+	@if ($alignment == center) {
+		$justify: center;
+		text-align: center; //hack for ie
+	} @elseif ($alignment == end) {
+		$justify: flex-end;
+		text-align: right; //hack for ie
+	} @elseif ($alignment == start) {
+		$justify: flex-start;
+		text-align: left; //hack for ie
+	}
+
+	justify-content: $justify;
+	text-align: $alignment;
+}
+
+@mixin grid-row-alignment-vertical ($alignment) {
+	@if ($alignment == middle) {
+		align-items: center;
+	} @else if ($alignment == bottom) {
+		align-items: flex-end;
+	} @else {
+		align-items: flex-start;
+	}
+}
+
+@mixin grid-row-spacing ($spacing) {
+	justify-content: $spacing;
+}
+
+@mixin grid-column ($reverse:false) {
+	// @include grid-column-direction($reverse);
+	box-sizing: border-box;
+	// display: flex;
+	// flex: 0 1 auto;
+	flex-grow: 0;
+	flex-shrink: 0;
+	padding-right: $half-gutter-width;
+	padding-left: $half-gutter-width;
+
+	@include breakpoint(tablet) {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+	}
+
+	@include breakpoint(mobile) {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	html.mdr-no-flexwrap & {
+		display: block;
+		float: left;
+		width: 100%;
+		padding-left: $gutter-width;
+		zoom: 1;
+
+		@include breakpoint(tablet) {
+			padding-left: 0.75rem;
+		}
+
+		@include breakpoint(mobile) {
+			padding-left: 0.5rem;
+		}
+	}
+}
+
+@mixin grid-column-direction ($reverse:false) {
+	@if ($reverse) {
+		flex-direction: column-reverse;
+	} @else {
+		flex-direction: column;
+	}
+}
+
+@mixin grid-column-span ($columns-to-span:$columns, $total-columns-in-row:$columns) {
+	@if ($columns-to-span == auto) {
+		flex-grow: 1;
+		flex-basis: 0;
+		max-width: 100%;
+
+	} @else {
+		$span-percentage: $columns-to-span / $total-columns-in-row;
+
+		flex-basis: $span-percentage * 100%;
+		max-width: $span-percentage * 100%;
+	}
+}
+
+@mixin grid-column-offset ($columns-to-offset, $total-columns-in-row:$columns) {
+	margin-left: ($columns-to-offset / $total-columns-in-row) * 100%;
+}
+
+@mixin grid-column-order ($position) {
+	@if ($position == last) {
+		$position: 9999;
+	} @else if ($position == first) {
+		$position: -9999;
+	}
+
+	order: $position;
+}
+
+.container-fluid {
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 2rem;
+	padding-left: 2rem;
+}
+
+.row {
+	@include grid-row;
+}
+
+.row.reverse {
+	@include grid-row-direction(true);
+}
+
+.col.reverse {
+	@include grid-column-direction($reverse:true);
+}
+
+@mixin example-viewport ($key) {
+	.hide-me--#{$key} {
+		display: none !important;
+	}
+
+	.show-me--#{$key} {
+		display: block !important;
+	}
+
+	.col-#{$key} {
+		$str: "&";
+		@for $i from 1 through $columns {
+			$str: $str + "," & + "-" + $i + "," + & + "-offset-" + $i;
+		}
+
+		@at-root #{$str} {
+			@include grid-column;
+		}
+
+		& {
+			// no idea why the indenting no longer works for this and why I need & {}
+			@include grid-column-span(auto);
+		}
+
+		@for $i from 1 through $columns {
+			&-#{$i} {
+				@include grid-column-span($i);
+			}
+
+			&-offset-#{$i} {
+				@include grid-column-offset($i);
+			}
+
+			&-offset-0 {
+				margin-left: 0;
+			}
+		}
+
+		&-hide {
+			display: none !important;
+		}
+
+		&-show {
+			display: block !important;
+		}
+
+		&-show-inline {
+			display: inline-block !important;
+		}
+	}
+
+	.start-#{$key} {
+		@include grid-row-alignment-horizontal(start);
+	}
+
+	.center-#{$key} {
+		@include grid-row-alignment-horizontal(center);
+	}
+
+	.end-#{$key} {
+		@include grid-row-alignment-horizontal(end);
+	}
+
+	.top-#{$key} {
+		@include grid-row-alignment-vertical(top);
+	}
+
+	.middle-#{$key} {
+		@include grid-row-alignment-vertical(middle);
+	}
+
+	.bottom-#{$key} {
+		@include grid-row-alignment-vertical(bottom);
+	}
+
+	.around-#{$key} {
+		@include grid-row-spacing(space-around);
+	}
+
+	.between-#{$key} {
+		@include grid-row-spacing(space-between);
+	}
+
+	.first-#{$key} {
+		@include grid-column-order(first);
+	}
+
+	.last-#{$key} {
+		@include grid-column-order(last);
+	}
+}
+
+.row--60 {
+	margin-right: -1.875rem;
+	margin-left: -1.875rem;
+
+	[class^="col-"] {
+		padding-right: 1.875rem;
+		padding-left: 1.875rem;
+	}
+}
+
+@each $key, $value in $viewport-layouts {
+	@if ($key == default) {
+		@include example-viewport($key);
+	} @else {
+		$max-width: map-get($value, "max-width");
+		@media screen and (max-width: $max-width) {
+			@include example-viewport($key);
+
+			// .container {
+			// 	width: $max-width;
+			// }
+		}
+	}
+}
+
+.content {
+	.row {
+		margin-top: -1.875rem;
+
+		+ * {
+			margin-top: 1.875rem;
+		}
+
+		+ .row {
+			margin-top: 0;
+		}
+
+		> [class^="col"] {
+			margin-top: 1.875rem;
+		}
+
+		&--full-height {
+			height: calc(100% + 1.875rem);
+		}
+	}
+}
+
+@include breakpoint(tablet) {
+	.content {
+		.row {
+			margin-top: -1.5rem;
+
+			+ * {
+				margin-top: 1.5rem;
+			}
+	
+			+ .row {
+				margin-top: 0;
+			}
+	
+			> [class^="col"] {
+				margin-top: 1.5rem;
+			}
+	
+			&--full-height {
+				height: calc(100% + 1.5rem);
+			}
+		}
+	}
+}
+
+
+@include breakpoint(mobile) {
+	.content {
+		.row {
+			margin-top: -1rem;
+
+			+ * {
+				margin-top: 1rem;
+			}
+	
+			+ .row {
+				margin-top: 0;
+			}
+	
+			> [class^="col"] {
+				margin-top: 1rem;
+			}
+	
+			&--full-height {
+				height: calc(100% + 1rem);
+			}
+		}
+	}
+
+	.main-page {
+
+		.section__body {
+			
+			.row {
+				flex-wrap: nowrap;
+				overflow: auto;
+			}
+		}
+	}
+}
+
+
+@include breakpoint(v-mobile) {
+
+	.main-page {
+
+		.section__body {
+			
+			.row {
+				flex-wrap: wrap;
+			}
+		}
+	}
+}
+
+
+.row--col {
+	flex-direction: column;
+
+	.col-default-6 {
+		max-height: 50%;
+		max-width: none;
+		flex-basis: auto;
+	}
+}
