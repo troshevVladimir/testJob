@@ -1,33 +1,39 @@
-# Global Project Ignore
+################# Общий игнор-лист. Не изменять. #################
 
+# Общее
 .idea
 .env
-
 *.gz
 *.DS_Store
-
-*.todo
-
-.sass-cache
-cache
-node_modules
-htdocs/bitrix/managed_cache
-htdocs/local/templates/*/javascripts
-htdocs/local/templates/*/stylesheets
-/src/vendor
-/src/composer.lock
-yarn.lock
 *.log
-package-lock.json
+cache
 
+# download
+/htdocs/upload/
 
-#core ignore
+# bitrix
 /htdocs/bitrix/cache/
 /htdocs/bitrix/managed_cache/
 /htdocs/bitrix/stack_cache/
 /htdocs/bitrix/modules/serverfilelog*
-/htdocs/bitrix/modules/updater.log
 /htdocs/bitrix/modules/serverfileerrorlog.dat
 /htdocs/bitrix/wizards/
 /htdocs/bitrix/backup/
-htdocs/upload
+/htdocs/local/modules/intervolga.migrato
+
+# frontend
+/local/templates/*/static
+.sass-cache
+yarn.lock
+node_modules
+
+# backend
+/src/vendor
+/src/var
+
+##################################################################
+
+
+# Кастомный игнор лист:
+#figma-export-icons
+icons-config.json

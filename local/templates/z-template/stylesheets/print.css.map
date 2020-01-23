@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAKA,KAGC;EAFA,IAAI,EAAE,EAAE;EACR,MAAM,EAAE,GAAG",
-"sources": ["../../../../frontend/styles/print.scss"],
-"names": [],
-"file": "print.css"
-}

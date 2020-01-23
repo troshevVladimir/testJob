@@ -11,27 +11,53 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-	<link rel="stylesheet" href="/local/templates/z-template/stylesheets/main.css">
-	<link rel="stylesheet" href="/local/templates/z-template/stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.4/es5-sham.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <![endif]-->
-    <script src="/local/templates/z-template/javascripts/vendor.js"></script>    
-    </head>
+
+    <link href="/local/templates/z-template/static/stylesheets/app.css" rel="stylesheet">
+</head>
     <body class="subindex">
         <div class="page-wrapper">
             <main class="content">
                 <div class="container container--wide">
-                    <h1>Pages:</h1>
-                    <ul>
-                        <li><a href="/list.html">Dynamic lists</a></li>
-                        <li><a href="/scheme.html">SVG</a></li>
-                    </ul>
+                    <div id="app">
+                        <h1>Pages:</h1>
+                        <ul>
+                            <li><a href="/list.html">Dynamic lists</a></li>
+                            <li><a href="/scheme.html">SVG</a></li>
+                        </ul>
+                    </div>
                 </div>
             </main>
         </div>
-    <script src="/local/templates/z-template/javascripts/main.js"></script>
+        
+        <footer class="footer hide-me--tablet">
+            <div class="container container--wide">
+                <nav class="footer__nav">
+                    <ul class="footer__nav-list">
+                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Карта сайта</a></li>
+                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Условия использования</a></li>
+                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Контакты</a></li>
+                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Антикоррупционная политика</a></li>
+                    </ul>
+                </nav>
+                <div class="footer__social">
+                    <a href="#" target="_blank" class="footer__social-link footer__social-link--tw" title="Twitter">tw</a>
+                    <a href="#" target="_blank" class="footer__social-link footer__social-link--fb" title="Facebook">fb</a>
+                    <a href="#" target="_blank" class="footer__social-link footer__social-link--in" title="LinkedIn">in</a>
+                </div>
+                <span class="copyright oslo-gray-text">
+                    &copy;&nbsp;2019&nbsp;ООО &laquo;Зебра Тест&raquo;
+                </span>
+            </div>
+        </footer>
+    <script>
+        App = {
+            page: {
+                lang: 'ru'
+            }
+        }
+    </script>
+    <script type=text/javascript src="/local/templates/z-template/static/javascripts/runtime.js"></script>
+    <script type=text/javascript src="/local/templates/z-template/static/javascripts/vendor.js"></script>
+    <script type=text/javascript src="/local/templates/z-template/static/javascripts/app.js"></script>
     </body>
 </html>
