@@ -75,9 +75,9 @@ exports.cssLoaders = function (options) {
             sassOptions: {
                 importer: globImporter()
             },
-            prependData: `@import "${path.resolve(__dirname, '../src/styles/vars/_vars.scss')}";
-@import "${path.resolve(__dirname, '../src/styles/vars/_colors.scss')}";
-@import "${path.resolve(__dirname, '../src/styles/base/_a-mixins.scss')}";`
+            prependData: `@import "./frontend/src/styles/vars/_vars.scss";
+                          @import "./frontend/src/styles/vars/_colors.scss";
+                          @import "./frontend/src/styles/base/_a-mixins.scss";`
         }),
         stylus: generateLoaders('stylus'),
         styl: generateLoaders('stylus')
