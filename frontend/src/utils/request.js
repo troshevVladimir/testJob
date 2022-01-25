@@ -3,12 +3,12 @@ import { VueAxios } from './axios'
 import { showNotyfications } from '@/utils/notifications'
 
 // eslint-disable-next-line no-undef
-const LANG = App.page.lang
+// const LANG = App.page.lang
 
 // Create an axios instance
 
 const service = axios.create({
-    baseURL: `/${LANG}/api` // api base_url
+    baseURL: `/api` // api base_url
 })
 
 const err = (error) => {
