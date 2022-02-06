@@ -6,15 +6,12 @@ import store from './store/'
 
 import '@/utils/filter' // global
 import { getLang } from '@/utils/i18n'
-import { AppDeviceEnquire } from '@/utils/mixin'
 import { showNotyfications } from '@/utils/notifications'
 import { VueAxios } from '@/utils/request'
 
-import List from '@/components/List'
-import Scheme from '@/components/Scheme'
+import List from '@/views/List'
 
 Vue.component('list', List)
-Vue.component('scheme', Scheme)
 
 // https://webpack.js.org/guides/dependency-management/#require-context
 const requireComponent = require.context(
@@ -86,7 +83,6 @@ Vue.use(VueAxios)
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
-    mixins: [AppDeviceEnquire],
     store,
     data: {
         lang: getLang(),

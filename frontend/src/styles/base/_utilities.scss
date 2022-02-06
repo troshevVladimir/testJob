@@ -96,82 +96,10 @@
 	text-align: left !important;
 }
 
-@include margin(top);
-
-@include margin(right);
-
-@include margin(left);
-
-@include margin(bottom);
-
-@include padding(top);
-
-@include padding(right);
-
-@include padding(left);
-
-@include padding(bottom);
-
-.u-all-padding{
-	padding: $grid-margin / 2;
-}
-
-.u-all-padding--small{
-	padding: $grid-margin / 4;
-}
-
-.u-all-padding--no {
-	padding: 0 !important;
-}
-
 .u-inline, %u-inline-block {
 	display: inline-block;
 }
 
-.u-bottom-line {
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-}
-
-.u-bottom-line--thick {
-	@extend .u-bottom-line;
-	border-bottom-width: 3px;
-}
-
-.u-bottom-line--dotted {
-	@extend .u-bottom-line;
-	border-bottom-style: dotted;
-}
-
-.u-bottom-line--dashed {
-	@extend .u-bottom-line;
-	border-bottom-style: dashed;
-}
-
-.u-bottom-border--no {
-	border-bottom: none;
-}
-
-.u-solid-border {
-	border: 1px solid;
-}
-
-// .u-columns-2 {
-// 	@include columns(2);
-// }
-
-// .u-columns-3 {
-// 	@include columns(3);
-// }
-
-.u-vertical-centering {
-	display: table;
-}
-
-.u-vertical-centering__el {
-	display: table-cell;
-	vertical-align: middle;
-}
 .u-static, %u-static {
 	position: static;
 }
