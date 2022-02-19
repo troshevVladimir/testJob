@@ -20,7 +20,7 @@ const requireComponent = require.context(
     /Z[\w-]+\/index\.js$/
 )
 
-requireComponent.keys().forEach(fileName => {
+requireComponent.keys().forEach((fileName) => {
     const componentConfig = requireComponent(fileName)
     const componentName = fileName.split('/')[1]
     Vue.component(componentName, componentConfig.default || componentConfig)

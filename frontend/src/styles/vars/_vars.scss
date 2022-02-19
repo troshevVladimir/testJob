@@ -4,13 +4,13 @@
 // Переменные SASS описаны в файле [sass/_vars.scss](../../sass/_vars.scss)
 //
 // Styleguide 2
-$domain: "gazprom-neft";           // need to be external links
+$domain: "gazprom-neft"; // need to be external links
 $debug: false;
-$responsive: true;                // адаптивность да/нет
-$site-width: 1200px;              // средняя ширина - breakpoint medium - от минимальной до средней
-$site-min-width: 320px;           // минимальная ширина страницы
-$site-max-width: $site-width;     // максимальная ширина
-$horizontal-padding: 20px;        // отступ по краям la
+$responsive: true; // адаптивность да/нет
+$site-width: 1200px; // средняя ширина - breakpoint medium - от минимальной до средней
+$site-min-width: 320px; // минимальная ширина страницы
+$site-max-width: $site-width; // максимальная ширина
+$horizontal-padding: 20px; // отступ по краям la
 
 $gutters: 0px 20px 30px 40px 50px 70px; // разные промежутки
 
@@ -36,30 +36,30 @@ $footer-height: 50px;
 
 ////////////////////////////////////
 //IU элементы                     //
-$input-height: 30px;              // высота текстовых полей поумолчанию
-$checkbox-size: $input-height;    // высота и ширина checkbox'ов поумолчанию
-$buttons-height: $input-height;   // высота кнопок поумолчанию
+$input-height: 30px; // высота текстовых полей поумолчанию
+$checkbox-size: $input-height; // высота и ширина checkbox'ов поумолчанию
+$buttons-height: $input-height; // высота кнопок поумолчанию
 ////////////////////////////////////
 
-$grid-margin: 24px;       				// расстояние между колонками
-$default-font-size: 16;      			// number of pixels, without units - default browser font size (16)
-$base-font-size: $default-font-size * 1px;      // размер текста по умолчанию для текста
-$base-line-height: (26.4/15);   		// межстрочное расстояние
+$grid-margin: 24px; // расстояние между колонками
+$default-font-size: 16; // number of pixels, without units - default browser font size (16)
+$base-font-size: $default-font-size * 1px; // размер текста по умолчанию для текста
+$base-line-height: (26.4/15); // межстрочное расстояние
 
 // Размеры шрифта
 
-$giga-size: 58px;     // .giga
-$mega-size: 47px;     // .mega
-$kilo-size: 44px;     // .kilo
-$alpha-size: 36px;    // .alpha
-$beta-size: 26px;     // .beta
-$gamma-size: 24px;    // .gamma
+$giga-size: 58px; // .giga
+$mega-size: 47px; // .mega
+$kilo-size: 44px; // .kilo
+$alpha-size: 36px; // .alpha
+$beta-size: 26px; // .beta
+$gamma-size: 24px; // .gamma
 $kappa-size: 20px;
-$delta-size: 18px;    // .delta
+$delta-size: 18px; // .delta
 $alpha-half: 17px;
 $kilo-third: 16px;
-$epsilon-size: 15px;  // .epsilon
-$zeta-size: 14px;     // .zeta
+$epsilon-size: 15px; // .epsilon
+$zeta-size: 14px; // .zeta
 $eta-size: 13px;
 $teta-size: 12px;
 $milli-size: 11px;
@@ -72,22 +72,8 @@ $h4: 24px;
 $h5: 18px;
 $h6: 18px;
 
-$cursorProperty:
-	default,
-	crosshair,
-	help,
-	move,
-	pointer,
-	progress,
-	text,
-	wait,
-	n-resize,
-	ne-resize,
-	e-resize,
-	se-resize,
-	s-resize,
-	sw-resize,
-	w-resize,
-	nw-resize;
+$cursorProperty: default, crosshair, help, move, pointer, progress, text, wait,
+    n-resize, ne-resize, e-resize, se-resize, s-resize, sw-resize, w-resize,
+    nw-resize;
 
 $list-marker-size: 5px;
