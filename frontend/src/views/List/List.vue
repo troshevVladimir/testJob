@@ -1,6 +1,6 @@
 <template>
-    <div class="page-wrtaper">
-        <div class="list-template">
+    <div class="page-wrapper">
+        <div class="list-template" v-if="!warnings.length">
             <component
                 v-for="n in news"
                 :key="n.id"
@@ -8,7 +8,11 @@
                 :data="propsData(n)"
             ></component>
         </div>
-        <Button v-if="!isLastPage" @click="btnHandler">Загрузить еще</Button>
+        <div v-else class="warning">{{ this.warnings[0] }}</div>
+
+        <Button v-if="!isLastPage && !warnings.length" @click="btnHandler">
+            Загрузить еще
+        </Button>
     </div>
 </template>
 
@@ -20,7 +24,7 @@ import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
     name: 'list',
     data () {
-        return { news: [] }
+        return { news: [], warnings: [] }
     },
 
     components: {
@@ -37,6 +41,7 @@ export default {
         async addNews () {
             await this.updateNews()
             this.news = this.getNews
+            this.warnings = this.getWarnings
         },
         currentComponent (n) {
             return n.spotlight ? PopualarCard : NewsCard
@@ -53,14 +58,10 @@ export default {
     },
     computed: {
         ...mapState('news', { getNews: 'news' }),
+        ...mapState('news', { getWarnings: 'warnings' }),
         ...mapState('news', { isLastPage: 'allFetched' })
     },
-    whatch: {
-        isLastPage (value) {
-            console.log(value)
-        }
-    },
-    async mounted () {
+    mounted () {
         this.addNews()
     }
 }
@@ -78,5 +79,12 @@ export default {
         flex-direction: column;
         row-gap: 0;
     }
+}
+
+.warning {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    color: $error-text-color;
 }
 </style>

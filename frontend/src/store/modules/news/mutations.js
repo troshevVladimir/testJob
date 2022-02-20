@@ -3,6 +3,9 @@ export let mutations = {
         state.news = [...state.news, ...payload.items]
         state.total = payload.nav.total
     },
+    emptyResponse (state) {
+        state.warnings.push('Нет Новостей')
+    },
     increasePage (state) {
         state.page = ++state.page
     },

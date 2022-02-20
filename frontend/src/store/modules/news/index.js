@@ -4,7 +4,8 @@ import { mutations } from './mutations'
 const state = {
     news: [],
     page: 0,
-    allFetched: false
+    allFetched: false,
+    warnings: []
 }
 
 export const news = {
