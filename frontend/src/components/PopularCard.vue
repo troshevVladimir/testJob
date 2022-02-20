@@ -2,31 +2,51 @@
     <div class="popular-card">
         <div class="popular-card__wrapper">
             <div class="label popular-card__label-data">
-                <span>27.05.2018</span>
+                <span>{{ filteredDate }}</span>
             </div>
         </div>
-        <div class="label popular-card__label-topic">
-            <span>В центре внимания</span>
+        <div v-if="data.themes.length" class="label popular-card__label-topic">
+            <span v-for="(theme, idx) in data.themes" :key="idx">{{
+                theme
+            }}</span>
         </div>
         <div class="popular-card__title">
-            Операционные результаты Зебры за 2-ой квартал 2018 года
+            {{ data.title }}
         </div>
     </div>
 </template>
 
 <script>
-export default {}
+import moment from 'moment'
+
+export default {
+    props: {
+        data: {
+            type: Object,
+            required: true
+        }
+    },
+    computed: {
+        filteredDate () {
+            return moment.unix(this.data.date).format('DD.MM.YYYY')
+        }
+    }
+}
 </script>
 
 <style lang="scss">
 .popular-card {
     background: center / cover no-repeat url("../assets/img/Rectangle.png");
-    max-width: calc((100% - 24px / 2) / 3 * 2);
+    width: calc((100% - 24px / 2) / 3 * 2);
     padding: 32px 16px 24px;
     display: flex;
     flex-direction: column;
     min-height: 254px;
     align-self: stretch;
+    @media screen and (max-width: $breakpoint-mobile) {
+        display: none;
+        border-bottom: 1px solid $quill-gray;
+    }
 
     .label {
         color: $white;

@@ -2,20 +2,36 @@
     <div class="news-card">
         <div class="news-card__wraper">
             <div class="label news-card__label-data">
-                <span>27.05.2018</span>
+                <span>{{ filteredDate }}</span>
             </div>
             <div class="news-card__title">
-                Зебра объявляет об изменениях в составе Совета директоров
+                {{ data.title }}
             </div>
         </div>
-        <div class="label news-card__label-topic">
-            <span>Охрана труда и промышленная безопасность</span>
+        <div v-show="data.themes.length" class="label news-card__label-topic">
+            <span v-for="(theme, idx) in data.themes" :key="idx">
+                {{ theme }}
+            </span>
         </div>
     </div>
 </template>
 
 <script>
-export default {}
+import moment from 'moment'
+
+export default {
+    props: {
+        data: {
+            type: Object,
+            required: true
+        }
+    },
+    computed: {
+        filteredDate () {
+            return moment.unix(this.data.date).format('DD.MM.YYYY')
+        }
+    }
+}
 </script>
 
 <style lang="scss">
@@ -33,6 +49,14 @@ export default {}
     flex-direction: column;
     min-height: 254px;
     align-self: stretch;
+    @media screen and (max-width: $breakpoint-mobile) {
+        max-width: 100%;
+        background: none;
+        row-gap: 0;
+        padding: 20px 0;
+        min-height: 0px;
+        border-bottom: 1px solid $quill-gray;
+    }
 
     &__wraper {
         flex: 1 0 auto;
@@ -43,7 +67,11 @@ export default {}
         font-size: 12px;
         background-color: currentColor;
         margin-bottom: 30px;
-
+        @media screen and (max-width: $breakpoint-mobile) {
+            margin-bottom: 4px;
+            font-size: 10px;
+            padding: 4px 8px 2px;
+        }
         span {
             color: $white;
         }
@@ -53,6 +81,10 @@ export default {}
         font-size: 24px;
         margin-bottom: 20px;
         line-height: 28px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
     }
 
     &__label-topic {

@@ -1,5 +1,5 @@
 <template>
-    <button class="button button--primary" @click.stop="emmit">
+    <button class="button button--primary button--block" @click.stop="emmit">
         <slot></slot>
     </button>
 </template>
@@ -15,4 +15,11 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.button--block {
+    @media screen and (max-width: $breakpoint-mobile) {
+        width: 100%;
+        padding-top: 5px;
+    }
+}
+</style>
